@@ -80,15 +80,15 @@ export class Fighter {
       this.sprites.ant = ant;
     } else if (this.characterId === 'bahlil') {
       const ethStart = new Image();
-      ethStart.src = '/assets/sprites/bahlil_ethanol_startup.png';
+      ethStart.src = '/assets/sprites/bahlil_ethanol_start.png';
       this.sprites.ethanol_start = ethStart;
 
       const ethAct = new Image();
-      ethAct.src = '/assets/sprites/bahlil_ethanol_action.png';
+      ethAct.src = '/assets/sprites/bahlil_ethanol_act.png';
       this.sprites.ethanol_act = ethAct;
 
       const oilStart = new Image();
-      oilStart.src = '/assets/sprites/bahlil_oil_startup.png';
+      oilStart.src = '/assets/sprites/bahlil_oil_start.png';
       this.sprites.oil_start = oilStart;
 
       const oilGey = new Image();
@@ -96,7 +96,7 @@ export class Fighter {
       this.sprites.oil_geyser = oilGey;
     } else if (this.characterId === 'wowo') {
       const trayStart = new Image();
-      trayStart.src = '/assets/sprites/wowo_tray_startup.png';
+      trayStart.src = '/assets/sprites/wowo_tray_start.png';
       this.sprites.tray_start = trayStart;
 
       const trayImp = new Image();
@@ -696,8 +696,8 @@ export class Fighter {
 
     // Draw sprite if loaded, else procedural pixel box
     if (poseImg && poseImg.complete && poseImg.naturalWidth > 0) {
-      const w = 90;
-      const h = 110;
+      const h = 120;
+      const w = Math.round(poseImg.naturalWidth * (h / poseImg.naturalHeight));
       ctx.drawImage(poseImg, -w / 2, -h, w, h);
     } else {
       // Fallback procedural retro fighter silhouette
