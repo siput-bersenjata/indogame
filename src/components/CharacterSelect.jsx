@@ -82,7 +82,7 @@ export const CharacterSelect = ({
 
       {/* Main Grid: Character Selection & Preview */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 my-auto py-2">
-        {/* Left Column: Character Cards List */}
+        {/* Left Column: Full-Body Character Cards List */}
         <div className="md:col-span-6 flex flex-col gap-3">
           {/* P1 / P2 Switcher */}
           <div className="flex gap-2">
@@ -108,7 +108,7 @@ export const CharacterSelect = ({
             </button>
           </div>
 
-          {/* Character Options */}
+          {/* Full-Body Character Cards */}
           <div className="grid grid-cols-3 gap-2">
             {CHARACTER_LIST.map((char) => {
               const isSelected = (activeTab === 'p1' ? p1Char : p2Char) === char.id;
@@ -119,16 +119,22 @@ export const CharacterSelect = ({
                   className={`relative p-2 bg-slate-900 border-2 pixel-btn flex flex-col items-center transition-all ${
                     isSelected
                       ? activeTab === 'p1'
-                        ? 'border-yellow-400 shadow-[0_0_12px_rgba(250,204,21,0.6)]'
-                        : 'border-red-500 shadow-[0_0_12px_rgba(239,68,68,0.6)]'
-                      : 'border-slate-800 hover:border-slate-600 opacity-75 hover:opacity-100'
+                        ? 'border-yellow-400 shadow-[0_0_15px_rgba(250,204,21,0.7)]'
+                        : 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.7)]'
+                      : 'border-slate-800 hover:border-slate-600 opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <div className="w-16 h-16 bg-slate-950 border border-slate-700 overflow-hidden mb-1.5">
+                  {/* Full Body Sprite Display */}
+                  <div className="w-full h-32 bg-slate-950/90 border border-slate-800 flex items-center justify-center p-1.5 overflow-hidden mb-1.5 rounded relative">
+                    {/* Character floor glow */}
+                    <div
+                      className="absolute bottom-1 inset-x-2 h-3 rounded-full opacity-40 blur-[1px]"
+                      style={{ backgroundColor: char.color }}
+                    />
                     <img
-                      src={char.avatar}
+                      src={char.fullBody}
                       alt={char.name}
-                      className="w-full h-full object-cover"
+                      className="h-full w-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] z-10 transition-transform duration-200 hover:scale-105"
                       style={{ imageRendering: 'pixelated' }}
                     />
                   </div>
@@ -176,23 +182,58 @@ export const CharacterSelect = ({
         {/* Right Column: Selected Fighter Spotlight & Signature Moves */}
         <div className="md:col-span-6 bg-slate-900/90 border-2 border-slate-700 pixel-box p-4 flex flex-col justify-between">
           <div>
-            {/* Fighter Title & Name */}
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
-              <div>
+            {/* Fighter Spotlight Card with Large Full-Body Sprite and Stats */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 bg-slate-950 p-3 border border-slate-800 mb-3 rounded relative overflow-hidden">
+              {/* Large Full Body Showcase */}
+              <div className="relative w-32 h-44 flex items-center justify-center flex-shrink-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent border border-slate-800/90 rounded overflow-hidden shadow-inner">
+                {/* Glowing arena pedestal */}
+                <div
+                  className="absolute bottom-2 inset-x-2 h-4 rounded-full opacity-60 blur-[2px]"
+                  style={{ backgroundColor: currentChar.color }}
+                />
+                <img
+                  src={currentChar.fullBody}
+                  alt={currentChar.name}
+                  className="h-40 w-auto object-contain z-10 drop-shadow-[0_8px_16px_rgba(0,0,0,0.95)] animate-pulse"
+                  style={{ imageRendering: 'pixelated' }}
+                />
+              </div>
+
+              {/* Info & Stats */}
+              <div className="flex-1 w-full">
                 <span className="text-[8px] text-cyan-400 font-bold tracking-widest uppercase">
                   {currentChar.title}
                 </span>
-                <h2 className="text-base font-extrabold text-yellow-400 arcade-glow-gold tracking-wider">
+                <h2 className="text-base font-extrabold text-yellow-400 arcade-glow-gold tracking-wider mb-2">
                   {currentChar.name}
                 </h2>
+
+                {/* Stat Bars */}
+                <div className="space-y-1.5 text-[8px] text-slate-400 font-bold">
+                  <div className="flex items-center gap-2">
+                    <span className="w-12">POWER</span>
+                    <div className="flex-1 h-2 bg-slate-900 border border-slate-700 overflow-hidden">
+                      <div className="h-full bg-red-500" style={{ width: `${currentChar.stats.power}%` }} />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-12">SPEED</span>
+                    <div className="flex-1 h-2 bg-slate-900 border border-slate-700 overflow-hidden">
+                      <div className="h-full bg-blue-500" style={{ width: `${currentChar.stats.speed}%` }} />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-12">RANGE</span>
+                    <div className="flex-1 h-2 bg-slate-900 border border-slate-700 overflow-hidden">
+                      <div className="h-full bg-yellow-500" style={{ width: `${currentChar.stats.range}%` }} />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="text-[9px] px-2 py-0.5 bg-slate-800 border border-slate-600 text-slate-300 font-bold">
-                {activeTab === 'p1' ? 'PLAYER 1' : gameMode === 'BOT' ? 'CPU BOT' : 'PLAYER 2'}
-              </span>
             </div>
 
             {/* Signature Moves Breakdown */}
-            <div className="space-y-2 mb-4">
+            <div className="space-y-2 mb-3">
               <div className="bg-slate-950 p-2 border-l-4 border-amber-500">
                 <div className="flex items-center justify-between mb-0.5">
                   <span className="text-[9px] text-amber-400 font-bold uppercase flex items-center gap-1">
@@ -225,8 +266,8 @@ export const CharacterSelect = ({
           </div>
 
           {/* Mode & Difficulty Selector */}
-          <div className="mt-4 pt-3 border-t border-slate-800">
-            <div className="flex gap-2 mb-3">
+          <div className="mt-3 pt-3 border-t border-slate-800">
+            <div className="flex gap-2 mb-2">
               <button
                 onClick={() => setGameMode('BOT')}
                 className={`flex-1 py-1.5 text-[9px] font-bold border pixel-btn flex items-center justify-center gap-1 uppercase ${
@@ -255,7 +296,7 @@ export const CharacterSelect = ({
 
             {/* Difficulty Pills (for VS BOT) */}
             {gameMode === 'BOT' && (
-              <div className="flex items-center justify-between gap-1 mb-3">
+              <div className="flex items-center justify-between gap-1 mb-2">
                 <span className="text-[8px] text-slate-400 font-bold">DIFFICULTY:</span>
                 {['EASY', 'MEDIUM', 'HARD', 'EXPERT'].map((level) => (
                   <button

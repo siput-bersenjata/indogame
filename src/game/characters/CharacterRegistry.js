@@ -5,7 +5,9 @@ export const CHARACTERS = {
     id: 'gufron',
     name: 'MAMA GUFRON',
     title: 'The Mystical Speaker',
-    avatar: '/assets/portraits/gufron.png',
+    avatar: '/assets/fullbody/gufron.png',
+    fullBody: '/assets/fullbody/gufron.png',
+    portrait: '/assets/portraits/gufron.png',
     color: '#ca8a04',
     bgGradient: 'from-amber-900 to-yellow-600',
     stats: {
@@ -32,7 +34,9 @@ export const CHARACTERS = {
     id: 'bahlil',
     name: 'BAHLIL',
     title: 'The Smiling Minister',
-    avatar: '/assets/portraits/bahlil.png',
+    avatar: '/assets/fullbody/bahlil.png',
+    fullBody: '/assets/fullbody/bahlil.png',
+    portrait: '/assets/portraits/bahlil.png',
     color: '#2563eb',
     bgGradient: 'from-blue-900 to-indigo-600',
     stats: {
@@ -59,7 +63,9 @@ export const CHARACTERS = {
     id: 'wowo',
     name: 'WOWO',
     title: 'The Safari Commander',
-    avatar: '/assets/portraits/wowo.png',
+    avatar: '/assets/fullbody/wowo.png',
+    fullBody: '/assets/fullbody/wowo.png',
+    portrait: '/assets/portraits/wowo.png',
     color: '#dc2626',
     bgGradient: 'from-red-900 to-amber-700',
     stats: {
