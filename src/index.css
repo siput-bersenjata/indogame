@@ -1,0 +1,115 @@
+@import "tailwindcss" source(none);
+
+* {
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:root {
+  font-family: 'Press Start 2P', monospace, cursive;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d0e15;
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  image-rendering: pixelated;
+}
+
+/* CRT Scanlines Overlay */
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 20;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Arcade text glowing */
+.arcade-glow-gold {
+  text-shadow: 0 0 4px #ffd700, 0 0 10px #ff8c00, 2px 2px 0 #000;
+}
+
+.arcade-glow-cyan {
+  text-shadow: 0 0 4px #00ffff, 0 0 10px #0088ff, 2px 2px 0 #000;
+}
+
+.arcade-glow-red {
+  text-shadow: 0 0 4px #ff3333, 0 0 10px #cc0000, 2px 2px 0 #000;
+}
+
+/* Pixel Border Utility */
+.pixel-box {
+  box-shadow: 
+    0 -3px 0 0 #334155,
+    0 3px 0 0 #000000,
+    -3px 0 0 0 #334155,
+    3px 0 0 0 #000000,
+    0 0 0 3px #1e293b;
+}
+
+.pixel-box-gold {
+  box-shadow: 
+    0 -3px 0 0 #fde047,
+    0 3px 0 0 #854d0e,
+    -3px 0 0 0 #fde047,
+    3px 0 0 0 #854d0e,
+    0 0 0 3px #ca8a04;
+}
+
+.pixel-box-red {
+  box-shadow: 
+    0 -3px 0 0 #f87171,
+    0 3px 0 0 #7f1d1d,
+    -3px 0 0 0 #f87171,
+    3px 0 0 0 #7f1d1d,
+    0 0 0 3px #b91c1c;
+}
+
+/* Button Push Animation */
+.pixel-btn:active {
+  transform: translateY(2px);
+}
+
+/* Crisp Canvas */
+canvas {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Shaking animation */
+@keyframes screenShake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-4px, 3px); }
+  40% { transform: translate(3px, -3px); }
+  60% { transform: translate(-3px, -2px); }
+  80% { transform: translate(2px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.screen-shake {
+  animation: screenShake 0.25s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #eab308;
+  border-radius: 3px;
+}
