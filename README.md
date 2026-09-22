@@ -6,6 +6,25 @@
 
 ---
 
+---
+
+## 📖 Tentang IndoGame (About the Project)
+
+### 💡 Latar Belakang & Konsep
+**IndoGame** lahir dari inspirasi masa keemasan game pertarungan arcade klasik era 1990-an (seperti *Street Fighter II*, *Mortal Kombat*, dan *King of Fighters*), namun diramu dengan sentuhan satir pop-kultur dan dinamika figur publik Indonesia yang unik dan menghibur.
+
+Setiap karakter, animasi gerakan (*sprite frames*), hingga efek jurus dirancang dengan ketelitian seni piksel 16-bit (*pixel art*), menghadirkan pengalaman visual retro nostalgia yang dipadukan dengan performa modern 60 FPS pada peramban web modern tanpa perlu instalasi emulator atau aplikasi pihak ketiga.
+
+### 🌟 Fitur Unggulan Sistem
+* **Performa 60 FPS Canvas Penuh:** Menggunakan mesin render HTML5 Canvas 2D dengan akselerasi perangkat keras GPU.
+* **Procedural Chiptune Audio Synthesizer:** Seluruh musik latar (BGM) retro dan efek suara pukulan (SFX) disintesis secara dinamis via Web Audio API tanpa berkas audio MP3/WAV eksternal yang berat.
+* **Kecerdasan Buatan Bot AI Multi-Tingkat:** Sistem algoritma AI prediktif dengan 4 level kesulitan (*Easy*, *Medium*, *Hard*, *Expert*) yang dapat membaca pola serangan, menangkis secara adaptif, dan melancarkan kombo balasan.
+* **Real-Time Multiplayer P2P (WebRTC):** Fitur pertarungan online antar-pemain secara langsung (*Peer-to-Peer*) melalui sambungan WebRTC DataChannel, sehingga menghasilkan latensi ultra-rendah (<25ms) tanpa membebani biaya server terpusat.
+* **Dukungan Touchscreen Mobile Penuh:** Kontrol Gamepad virtual responsif di layar sentuh ponsel pintar (*Android & iOS*) dengan deteksi multitouch presisi.
+* **Arsitektur Stack Bersih & Ringan:** Dibangun murni menggunakan **Vanilla JavaScript (ES Modules)**, **HTML5**, **CSS3**, dan di-bundle secara efisien menggunakan **Vite**.
+
+---
+
 ## 🎮 Roster Karakter & Jurus Spesial
 
 ### 1. Mama Gufron *(The Mystical Speaker)*
